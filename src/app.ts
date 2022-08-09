@@ -6,6 +6,7 @@ app.use(json());
 
 app.get("/students", async (req: Request, res: Response) => {
   const students = await prisma.student.findMany();
+  console.log("Testando o GitHub Actions");
   res.send(students);
 });
 
@@ -15,12 +16,13 @@ app.post("/students", async (req: Request, res: Response) => {
     data: students,
     skipDuplicates: true
   });
-
+  console.log("Testando o GitHub Actions");
   res.sendStatus(201); // created
 });
 
 app.get("/students/random", async (req: Request, res: Response) => {
   const students = await prisma.student.findMany();
+  console.log("Testando o GitHub Actions");
   if (students.length > 0) {
     const randomStudent = students[Math.floor(Math.random() * students.length)];
     res.send(randomStudent);
